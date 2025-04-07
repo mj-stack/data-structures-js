@@ -47,6 +47,49 @@ class LinkedList {
       this.head = current.next;
       return;
     }
+
+    let previous = null;
+    while (current.next !== null) {
+      previous = current;
+      current = current.next;
+      if (current.data === dataToDelete) {
+        previous.next = current.next;
+        return;
+      }
+    }
+  }
+
+  search(dataToSearch) {
+    if (this.head === null) {
+      return false;
+    }
+
+    let current = this.head;
+    if (current.data === dataToSearch) {
+      return true;
+    }
+
+    while (current.next !== null) {
+      current = current.next;
+      if (current.data === dataToSearch) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  length() {
+    if (this.head === null) {
+      return 0;
+    }
+
+    let counter = 1;
+    let current = this.head;
+    while (current.next !== null) {
+      current = current.next;
+      counter++;
+    }
+    return counter;
   }
 }
 
@@ -54,7 +97,13 @@ const linkedList = new LinkedList();
 linkedList.insertAtEnd(2);
 linkedList.insertAtEnd(3);
 linkedList.insertAtEnd(4);
+linkedList.traverse();
 linkedList.deleteByValue(3);
 linkedList.traverse();
+
+console.log(linkedList.search(2));
+console.log(linkedList.search(6));
+
+console.log(linkedList.length());
 
 export default Node;
