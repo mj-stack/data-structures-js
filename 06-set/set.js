@@ -20,5 +20,22 @@ console.log(mySet);
 const myArray = [1, 2, 2, 3, 4, 4, 5];
 console.log(myArray);
 
-const mySet2 = new Set(myArray);
+const mySet2 = [...new Set(myArray)];
 console.log(mySet2);
+
+const setA = new Set([1, 2, 3, 4]);
+const setB = new Set([3, 4, 5, 6]);
+
+const unionSet = new Set([...setA, ...setB]);
+console.log(unionSet);
+
+const setAAsArray = [...setA];
+const intersection = setAAsArray.filter((x) => setB.has(x));
+const intersectionSet = new Set(intersection);
+console.log(intersectionSet);
+
+const setAAsArrayD = [...setA];
+const differenceArray = setAAsArray.filter((x) => !setB.has(x));
+console.log(differenceArray);
+const differenceSet = new Set(differenceArray);
+console.log(differenceSet);
